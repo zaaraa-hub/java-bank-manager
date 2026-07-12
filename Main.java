@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 public class Main{
     public static void main(String[] args){
 
@@ -17,8 +18,14 @@ public class Main{
             System.out.println("5. Withdraw Money");
             System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
-            choice = sc.nextInt();
-            sc.nextLine(); 
+            try {
+                choice = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a number between 1 and 6.");
+                sc.nextLine(); // Clear the invalid input
+                continue; // Skip to the next iteration of the loop
+            }
+            sc.nextLine(); // Clear the newline character
             switch(choice){
                 case 1:
                     bank.createAccount();
