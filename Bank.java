@@ -1,5 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 public class Bank {
     private Scanner sc = new Scanner(System.in);
@@ -107,5 +112,42 @@ public class Bank {
         if(!found){
             System.out.println("Account not found.");
         }
+    }
+
+    public void saveAccounts(){
+        try{
+           FileWriter file = new FileWriter("accounts.txt");
+           BufferedWriter writer = new BufferedWriter(file);
+
+           for(Account account : accounts){
+            writer.write(account.getAccountNumber() + "," + account.getAccountHolderName() + "," + account.getBalance());
+            writer.newLine();
+           }
+
+           writer.close();
+        }
+        catch(IOException e){
+            System.out.println("An error occurred while saving accounts.");
+        }
+    }
+
+    public void loadAccounts(){
+      try{
+       FileReader file = new FileReader("accounts.txt");
+       BufferedReader reader = new BufferedReader(file);
+        String line;
+        while((line = reader.readLine()) != null){
+         String[] data = line.split(",");
+         String accountNumber = data[0];
+         String accountHolderName = data[1];
+         double balance = Double.parseDouble(data[2]);
+         Account account = new Account(accountHolderName, accountNumber, balance);
+         accounts.add(account);
+        }
+       reader.close();
+    }
+      catch(IOException e){
+      System.out.println("An error occurred while loading accounts.");
+      }
     }
 }

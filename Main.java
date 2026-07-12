@@ -5,6 +5,7 @@ public class Main{
 
         Scanner sc = new Scanner(System.in);
         Bank bank = new Bank(sc);
+        bank.loadAccounts();
         
 
         int choice = 0;
@@ -43,6 +44,7 @@ public class Main{
                     bank.withdrawMoney();
                     break;
                 case 6:
+                    bank.saveAccounts();
                     System.out.println("Thank you for using the Bank Management System. Goodbye!");
                     break;
                 default:
