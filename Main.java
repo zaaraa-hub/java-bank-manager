@@ -7,7 +7,7 @@ public class Main{
         Bank bank = new Bank(sc);
         
 
-        int choice;
+        int choice = 0;
 
         do{
             System.out.println("------Welcome to the Bank Management System------");
@@ -21,11 +21,11 @@ public class Main{
             try {
                 choice = sc.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input! Please enter a number between 1 and 6.");
-                sc.nextLine(); // Clear the invalid input
-                continue; // Skip to the next iteration of the loop
+                System.out.println("Invalid input! Please enter a valid number.");
+                sc.nextLine(); 
+                continue; 
             }
-            sc.nextLine(); // Clear the newline character
+            sc.nextLine(); 
             switch(choice){
                 case 1:
                     bank.createAccount();
