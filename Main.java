@@ -11,5 +11,8 @@ public class Main{
         bank.searchAccount();
 
         bank.depositMoney();
+
+        bank.withdrawMoney();
+        bank.displayAccounts();
     }
 }

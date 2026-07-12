@@ -27,6 +27,8 @@ public class Bank {
   
     public void displayAccounts(){
         System.out.println("List of Accounts: ");
+        System.out.println("  ");
+        System.out.println("---------------------------");
         for(int i=0; i<accounts.size(); i++){
             Account account = accounts.get(i);
             System.out.println("Account Number: " + account.getAccountNumber());
@@ -46,6 +48,7 @@ public class Bank {
                 System.out.println("Account Number: " + account.getAccountNumber());
                 System.out.println("Account Holder Name: " + account.getAccountHolderName());
                 System.out.println("Account Balance: " + account.getBalance());
+                System.out.println("---------------------------");
                 found = true;
                 break;
             }
@@ -68,6 +71,7 @@ public class Bank {
                 double newBalance = account.getBalance() + amount;
                 account.updateBalance(newBalance);
                 System.out.println("Deposit successful. New balance: " + account.getBalance());
+                System.out.println("---------------------------");
                 found = true;
                 break;
             }
@@ -75,6 +79,32 @@ public class Bank {
         if(!found){
                 System.out.println("Account not found.");
             }
-        
+    }
+
+    public void withdrawMoney(){
+        boolean found = false;
+        System.out.print("Enter account number to withdraw money: ");
+        String findAccountNumber = sc.nextLine();
+        for(int i=0; i<accounts.size(); i++){
+            Account account = accounts.get(i);
+            if(account.getAccountNumber().equals(findAccountNumber)){
+                System.out.print("Enter amount to withdraw: ");
+                double amount = sc.nextDouble();
+                sc.nextLine(); 
+                if(amount <= account.getBalance()){
+                    double newBalance = account.getBalance() - amount;
+                    account.updateBalance(newBalance);
+                    System.out.println("Withdrawal successful. New balance: " + account.getBalance());
+                } else {
+                    System.out.println("Insufficient balance.");
+                }
+                System.out.println("---------------------------");
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            System.out.println("Account not found.");
+        }
     }
 }
