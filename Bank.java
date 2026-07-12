@@ -6,7 +6,8 @@ public class Bank {
     private ArrayList<Account> accounts = new ArrayList<>();
     private int nextAccountNum = 1001;
 
-    public Bank() {
+    public Bank(Scanner sc) {
+        this.sc = sc;
 
     }
 
