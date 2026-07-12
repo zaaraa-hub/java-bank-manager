@@ -54,4 +54,27 @@ public class Bank {
             System.out.println("Account not found.");
         }
     }
+
+    public void depositMoney(){
+        boolean found = false;
+        System.out.print("Enter account number to deposit money: ");
+        String findAccountNumber = sc.nextLine();
+        for(int i=0; i<accounts.size(); i++){
+            Account account = accounts.get(i);
+            if(account.getAccountNumber().equals(findAccountNumber)){
+                System.out.print("Enter amount to deposit: ");
+                double amount = sc.nextDouble();
+                sc.nextLine(); 
+                double newBalance = account.getBalance() + amount;
+                account.updateBalance(newBalance);
+                System.out.println("Deposit successful. New balance: " + account.getBalance());
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+                System.out.println("Account not found.");
+            }
+        
+    }
 }

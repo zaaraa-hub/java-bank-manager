@@ -9,5 +9,7 @@ public class Main{
         bank.displayAccounts();
 
         bank.searchAccount();
+
+        bank.depositMoney();
     }
 }

@@ -18,4 +18,8 @@ public class Account{
     public double getBalance(){
         return balance;
     }
+
+public void updateBalance(double newBalance){
+    this.balance = newBalance;
+}
 }
